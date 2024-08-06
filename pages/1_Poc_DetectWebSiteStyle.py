@@ -1,10 +1,8 @@
 import streamlit as st
 import requests
 from bs4 import BeautifulSoup
-from colorthief import ColorThief
 from io import BytesIO
 import requests
-from langchain_community.document_loaders import UnstructuredHTMLLoader
 import re
 from collections import Counter
 
