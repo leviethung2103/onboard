@@ -19,7 +19,7 @@ st.write(
 
 st.write("### Input")
 with st.sidebar:
-    website_url = st.text_input("What is your website URL?")
+    website_url = st.text_input("What is your website URL?", value="http://vnexpress.net/")
     writing_pages = st.text_input("Which web pages best demonstrate your writing style?")
 
 # create the button analyze
