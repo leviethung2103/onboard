@@ -2,37 +2,29 @@
 
 AI-Assisted Onboarding: Project Assignment
 
+## Challenges
+- Mimicking Writing Style
+- Detect Website Style
 
+## Prerequisites
+- Anaconda
 
-
-
-Challenges:
-- Different website has different technology -> hard to crawl the data
-
-
-## Usage
+## Setup
 ```bash
-streamlit run Welcome.py
+conda create -n ai_env python=3.10
+conda activate ai_env
+pip install -r requirements.txt
 ```
 
+## Usage
 
-## Reference
+```bash
+# clone .env file
+cp -r .env.example .env
 
-1. Async Chromium - https://python.langchain.com/v0.2/docs/integrations/document_loaders/async_chromium/
+# modify parameters in .env file
 
-
-## Scraping
-
-2. HTML Tags
-Tags are the heart of HTML. They define different elements on a webpage. Some common tags include:
-
-<h1> to <h6>: Headings, with <h1> being the largest and <h6> the smallest.
-<p>: Paragraphs of text.
-<a>: Hyperlinks, allowing you to navigate to other pages.
-<img>: Images.
-<ul>, <ol>, <li>: Lists, both unordered and ordered.
-
-3. Attributes
-<a href="https://www.example.com">Visit Example</a>
-
+# start app
+streamlit run Welcome.py
+```
 

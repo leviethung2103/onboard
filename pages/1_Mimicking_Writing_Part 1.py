@@ -1,10 +1,11 @@
 import requests
-import os
 from dotenv import load_dotenv
 import pandas as pd
+import os
 import streamlit as st
 from linkedin_api import Linkedin
 from utils import scrape_jina_ai, extract_links_from_blog, extract_blog_content_from_url, get_netloc
+from constants import OUTPUT_DIR
 
 load_dotenv(override=True)
 
@@ -16,7 +17,7 @@ st.set_page_config(
 st.write("## Welcome to the Writing Style Analyzer!")
 
 st.write(
-    "This tool helps you analyze the writing style of your website.\n\nPlease update the link on the sidebar to analyze.\n\nFinally, press the 'Analyze' button to get the analysis result."
+    "This tool helps you analyze the writing style of your website.\n\nPlease update the link below to analyze.\n\nFinally, press the 'Analyze' button to get the analysis result."
 )
 
 st.write("### Input")
@@ -31,7 +32,7 @@ analyze_button = st.button("Analyze")
 if analyze_button:
     st.write("### Analysis result")
 
-    if len(website_url) <= 0:
+    if len(website_url) <= 0 or not website_url.startswith("https://"):
         st.warning("Please enter a valid website URL.", icon="⚠️")
         st.stop()
 
@@ -64,7 +65,7 @@ if analyze_button:
         df = pd.DataFrame(data)
 
         website_name = get_netloc(website_url)
-        df.to_csv(f"{website_name}.csv", index=False)
+        df.to_csv(f"{OUTPUT_DIR}/{website_name}.csv", index=False)
 
         st.success("Scraped website content successfully!")
 
@@ -81,7 +82,7 @@ if analyze_button:
         data.append({"url": url, "content": content})
 
     df_linkedin = pd.DataFrame(data)
-    df_linkedin.to_csv(f"{account_name}_posts.csv", index=False)
+    df_linkedin.to_csv(f"{OUTPUT_DIR}/{account_name}_posts.csv", index=False)
 
     st.success("Scraped website content successfully!")
 

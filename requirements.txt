@@ -4,3 +4,5 @@ requests
 python-dotenv
 linkedin-api
 openai
+selenium
+chromedriver
