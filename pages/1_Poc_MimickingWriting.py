@@ -43,34 +43,34 @@ if analyze_button:
         account_name = linkedin
 
     st.write("**Processing website url...**")
-    # response = requests.get(website_url, timeout=10)
-    # if response.status_code != 200:
-    #     st.warning("Website is not accessible.", icon="⚠️")
-    # else:
-    #     # Step 1: get content of blog
-    #     content = scrape_jina_ai(website_url)
+    response = requests.get(website_url, timeout=10)
+    if response.status_code != 200:
+        st.warning("Website is not accessible.", icon="⚠️")
+    else:
+        # Step 1: get content of blog
+        content = scrape_jina_ai(website_url)
 
-    #     print(content[:500])
+        print(content[:500])
 
-    #     # Step 2: extract links from blog
-    #     raw_links, links = extract_links_from_blog(content)
+        # Step 2: extract links from blog
+        raw_links, links = extract_links_from_blog(content)
 
-    #     data = []
+        data = []
 
-    #     # Step 3: extract content from each link
-    #     for link in links[0:number_of_posts]:
-    #         blog_content = extract_blog_content_from_url(link.get("link"))
-    #         data.append(blog_content)
+        # Step 3: extract content from each link
+        for link in links[0:number_of_posts]:
+            blog_content = extract_blog_content_from_url(link.get("link"))
+            data.append(blog_content)
 
-    #     # Step 4: Save extracted content to CSV file
-    #     df = pd.DataFrame(data)
+        # Step 4: Save extracted content to CSV file
+        df = pd.DataFrame(data)
 
-    #     website_name = get_netloc(website_url)
-    #     df.to_csv(f"{website_name}.csv", index=False)
+        website_name = get_netloc(website_url)
+        df.to_csv(f"{website_name}.csv", index=False)
 
-    #     st.success("Scraped website content successfully!")
+        st.success("Scraped website content successfully!")
 
-    #     st.dataframe(df)
+        st.dataframe(df)
 
     st.write("**Processing linkedin account...**")
     api = Linkedin(os.getenv("LINKEDIN_EMAIL"), os.getenv("LINKEDIN_PASSWORD"))
