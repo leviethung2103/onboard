@@ -90,8 +90,6 @@ if analyze_button:
             css_links = get_css_links(html_file)
             # st.write(css_links)
 
-            import re
-
             # pattern = r'font-family:\s*"([^"]*)"'
             # pattern = r'font-family:\s*["\']?([^"\';]*)["\']?'
             pattern = r"font-family:(.*?);"

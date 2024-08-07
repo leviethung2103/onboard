@@ -1,0 +1,196 @@
+url,content
+https://www.linkedin.com/posts/chiphuyen_mlengineering-genai-aiapplications-activity-7222286924747616256-9KEM?utm_source=combined_share_message&utm_medium=member_desktop,"Building a platform for generative AI applications
+
+Link: https://lnkd.in/gDUcwQ-v
+
+After studying how companies deploy generative AI applications, I noticed many similarities in their platforms. This post outlines these common components, what they do, and implementation considerations.
+
+This post starts from the simplest architecture and progressively add more components.
+
+1. Enhance context input into a model by giving the model access to external data sources and tools for information gathering.
+
+2. Put in guardrails to protect your system and your users.
+
+3. Add model router and gateway to support complex pipelines and add more security.
+
+4. Optimize for latency and costs with cache.
+
+5. Add complex logic and write actions to maximize your system’s capabilities.
+
+I try my best to keep the architecture general, but certain applications might deviate. As always, feedback is appreciated!
+
+#mlengineering #genai #aiapplications"
+https://www.linkedin.com/posts/chiphuyen_llms-aiengineering-aiapplications-activity-7211786332660989954-LzO0?utm_source=combined_share_message&utm_medium=member_desktop,"In many conversations, I noticed several common misperceptions about generative AI.
+
+1. Technologies behind generative AI are new
+While many applications made possible by GenAI are new, the technologies surrounding it are not.
+
+- Retrieval, the backbone of RAG, is also the backbone of search and recommender systems. The first information retrieval system was described in the 1920s.
+- Vector search has been around since early 2010s.
+- Language modeling was first introduced in 1951.
+- The attention mechanism was introduced in 2015.
+- Inference optimization techniques (quantization, low-rank factorization, distillation) have been around for a while.
+
+While many temporary fixes will become outdated, the fundamentals will remain important. The trick is to separate the temporary fixes from the fundamentals. 
+
+2. Foundation models will completely replace classical ML
+In my observation, most GenAI applications in production have classical ML components. Outside of leveraging information retrieval, 30 - 50% of applications have a classification component, such as:
+
+- Intent classification: predicting the intent of a query so that you can route it to the right model.
+- Scoring: evaluating each output by giving it a score, e.g. from 1 to 5.
+- Next action prediction: if a model has access to multiple tools, predict which tool to use next.
+
+Foundation models won’t replace classical ML. They should be used together with classical ML models.
+
+3. Hallucinations make GenAI applications unusable
+Models hallucinate because they are probabilistic. However, a model is much more likely to hallucinate when it doesn’t  have access to the right information. 
+
+Multiple studies have shown that hallucinations can be significantly reduced by giving the model the right context via retrieval or tools that the model can use to gather context (e.g. web search).
+
+While hallucinations are dealbreakers for many applications, they can be sufficiently curtailed to make GenAI usable for many more.
+
+#llms #aiengineering #aiapplications"
+https://www.linkedin.com/posts/chiphuyen_snowflakesummit-dataengineering-activity-7204528631795126274-Cxb7?utm_source=combined_share_message&utm_medium=member_desktop,"As an engineer who've learned so much from writing, I love meeting other engineers who write. It's great seeing Joe Reis 🤓 (Fundamentals of Data Engineering), Matt Topol (In-memory Analytics with Apache Arrow), Alex Merced (Apache Iceberg: A Definite Guide), and so many other great folks in town for #SnowflakeSummit!
+
+Matt and I will be at Snowflake Dev Day the whole day and we'll have a few copies of our books to give away. Come say hi!!
+
+#dataengineering"
+https://www.linkedin.com/posts/chiphuyen_gpu-distributedsystems-mlengineering-activity-7198797715651129344-81lQ?utm_source=combined_share_message&utm_medium=member_desktop,"The rapid adoption of GPUs had made GPU optimization one of the most sought-after engineering skills. I'm excited for the GPU optimization workshop our community is hosting this Thursday with stellar speakers from Meta, NVIDIA, OpenAI, and Voltron Data.
+
+RSVP: https://lu.ma/1wu5ppl5
+
+[12:00] Crash course on GPU optimization (Mark Saroufim, PyTorch core developer, Meta)
+Mark will give an overview of why GPUs, the metrics that matter, and different GPU programming models (thread-based CUDA and block-based Triton). He promises this will be a painless guide to writing CUDA/Triton kernels!
+
+[12:45] High-performance LLM serving on GPUs (Sharan Chetlur, TensorRT-LLM core developer, NVIDIA)
+Sharan will discuss how to build performant, flexible solutions to optimize LLM serving given the rapid evolution of new models and techniques. The talk will cover optimization techniques such as token concatenation, different strategies for batching, and cache.
+
+[13:20] Block-based GPU Programming with Triton (Philippe Tillet, Triton lead, OpenAI)
+Philippe will explain how Triton works and how it differs from CUDA. Triton aims to be higher-level than CUDA while being more expressive (lower-level) than common graph compilers like XLA and Torch-Inductor.
+
+[14:00] Intro to data processing on GPUs (William Malpica, Voltron Data co-founder)
+Most people today use GPUs for training and inference. A category of workloads that GPUs excel at but are underutilized for is data processing. William will discuss why large-scale data processing should be done on GPUs instead of CPUs and how different tools like cuDF, cuPY, RAPIDS, and Theseus leverage GPUs for data processing.
+
+#gpu #distributedsystems #mlengineering"
+https://www.linkedin.com/posts/chiphuyen_aiengineering-llms-aievaluation-activity-7194734998376050688-uP2s?utm_source=combined_share_message&utm_medium=member_desktop,"A big issue I see with AI systems is that people aren't spending enough time evaluating their evaluation pipeline. 
+
+1. Most teams use more than one metrics (3-7 metrics in general) to evaluate their applications, which is a good practice. However, very few are measuring the correlation between these metrics.
+
+If two metrics are perfectly correlated, you probably don't need both of them. If two metrics strongly disagree with each other, either this reveals something important about your system, or your metrics just aren't trustworthy.
+
+2. Many (I estimate 60 - 70%?) use AI to evaluate AI responses, with common criteria being conciseness, relevance, coherence, faithfulness, etc. I find AI-as-a-judge very promising, and expect to see more of this approach in the future.
+
+However, AI-as-a-judge scores aren’t deterministic the way classification F1 scores or accuracy are. They depend on the model, the judge's prompt, and the use case. Many AI judges are good, but many are bad.
+
+Yet, very few are doing experiments to evaluate their AI judges. Are good responses given better scores? How reproducible the scores are -- if you ask the judge twice, do you get the same score? Is the judge's prompt optimal? Some aren’t even aware of the prompts their applications are using, because they use prompts created by eval tools or by other teams.
+
+Also fun fact I learned from a (small) poll yesterday: some teams are spending more money on evaluating models’ responses than on generating responses 🤯 
+
+#aiengineering #llms #aievaluation"
+https://www.linkedin.com/posts/chiphuyen_aiengineering-llms-aiapplication-activity-7193302509845692416--yPc?utm_source=combined_share_message&utm_medium=member_desktop,"LinkedIn has published one of the best reports I’ve read on deploying LLM applications: what worked and what didn’t.
+
+1. Structured outputs
+They chose YAML over JSON as the output format because YAML uses less output tokens. Initially, only 90% of the outputs are correctly formatted YAML. They used re-prompting (asking the model to fix its YAML responses), which increased the number of API calls significantly.
+
+They then analyzed the common formatting errors, added those hints to the original prompt, and wrote an error fixing script. This reduced their errors to 0.01%.
+
+2.  Sacrificing throughput for latency
+Originally, they focused on TTFT (Time To First Token), but realized that TBT (Time Between Token) hurt them a lot more, especially with Chain-of-Thought queries where users don’t see the intermediate outputs.
+
+They found that TTFT and TBT inversely correlate with TPS (Tokens per Second). To achieve good TTFT and TBT, they had to sacrifice TPS.
+
+3. Automatic evaluation is hard
+One core challenge of evaluation is coming up with a guideline on what a good response is. For example, for skill fit assessment, the response: “You’re not a good fit for this job” can be correct, but not helpful.
+
+Originally, evaluation was ad-hoc. Everyone could chime in. That didn’t work. They then have linguists build tooling and processes to standardize annotation, evaluating up to 500 daily conversations and these manual annotations guide their iteration.
+
+Their next goal is to get automatic evaluation, but it’s not easy.
+
+4. Initial success with LLMs can be misleading
+It took them 1 month to achieve 80% of the experience they wanted, and additional 4 months to surpass 95%. The initial success made them underestimate how challenging it is to improve the product, especially dealing with hallucinations. They found it discouraging how slow it was to achieve each subsequent 1% gain.
+
+#aiengineering #llms #aiapplication"
+https://www.linkedin.com/posts/chiphuyen_aiengineering-aiapplications-llms-activity-7191471862994931713-T-3B?utm_source=combined_share_message&utm_medium=member_desktop,"I’m making a list of things to consider when using open source models and commercial models. Here’s what I have currently. What else should I add?
+
+Considerations for commercial models
+
+1. Data privacy: employees might accidentally include company’s private data in the prompt, e.g. when Samsung employees accidentally leaked the company’s secrets using ChatGPT.
+
+2. Functionality: proprietary models might have important features like function calling and JSON mode. However, most model providers have no or limited logprobs (log probabilities) API. Logprobs are very useful for classification tasks, evaluation (confidence scoring), and interpretability.
+
+3. API cost: API calls can get expensive at scale.
+
+4. Finetuning: model providers might not let you finetune their models. Off-the-shelf, commercial models might be better for your use case, but might not be as good as open source + finetuning.
+
+5. Edge use cases: can’t work for use cases on devices that have no Internet connection.
+
+Considerations for open source models
+
+1. Data lineage/copyright: people are less likely to sue open source model builders for training on copyrighted data. However, if you use these models to make money, you can get in trouble.
+
+2. Functionality: hosting your models gives you access to logprobs and other intermediate outputs. There are external tools that provide function calling and constrained sampling for certain open source models, but these features might be limited.
+
+3. Engineering cost: hosting and optimizing large models takes nontrivial time, talent, and engineering effort. APIs are expensive, but engineering can be even more so. This can be mitigated by using model hosting services if they support the models you want to use.
+
+4. Finetuning: in theory, you can finetune open source models, but it might not be easy to do so.
+
+#aiengineering #aiapplications #llms"
+https://www.linkedin.com/posts/chiphuyen_aiengineering-evaluation-aiapplications-activity-7190717542858907648-HNIB?utm_source=combined_share_message&utm_medium=member_desktop,"I have this hypothesis that the most popular enterprise AI applications today aren’t the ones that solve the most important problems or make the most money. The most popular applications are the ones that are easiest to evaluate.
+
+Let’s look at some common enterprise AI use cases: recommender system, fraud detection, coding, and LLM-powered classification.
+
+1. Recommender system: evaluated by increase in engagement or purchase through rate.
+
+2. Fraud detection: evaluated by how much money is saved from prevented fraud.
+
+3. Coding is a common LLM use case. Unlike other text generation tasks, coding can be evaluated using functional correctness. Generated code is correct if it compiles and outputs the expected values.
+
+4. Even though LLMs are open-ended, two friends estimated ~⅓ of the LLM applications they see are close-ended (classification, e.g. intent classification). It’s much easier to evaluate classification tasks than open-ended tasks.
+
+From a business perspective, this makes sense, as companies don’t want to invest in anything without a measurable return on investment. However, this hypothesis, if true, has two consequences.
+
+1. Focusing only on applications whose outcomes can be measured is similar to looking for the lost key under the lamppost (at night). It’s easier to do, but it doesn’t mean we'll find the key. We might be missing out on many potentially game-changing applications because there is no easy way to evaluate them.
+
+2. Open-ended evaluation is the biggest bottleneck to AI adoption.
+
+#aiengineering #evaluation #aiapplications"
+https://www.linkedin.com/posts/chiphuyen_aiengineering-aiapplications-mlengineering-activity-7188642075230236672-zQ1u?utm_source=combined_share_message&utm_medium=member_desktop,"I’m excited to share that I’m working on a new book about building applications with foundation models. AI Engineering builds upon Machine Learning Systems Design, but with a focus on large scale, ready made models.
+
+The book covers:
+- The new AI stack (e.g. how it differs from traditional ML engineering)
+- Different approaches to evaluate open-ended systems
+- Dataset engineering
+- Prompt engineering, RAG, agents
+- Finetuning
+- Compute infrastructure, including how to mitigate latency and cost
+
+AI Engineering is scheduled for late 2024. An early draft of the first 3 chapters are available on the O'Reilly platform: https://lnkd.in/gKbpWPyb 
+
+I’ve learned a lot during the research and writing process for this book. I hope you’ll find the learnings useful. Feedback is much appreciated!
+
+#aiengineering #aiapplications #mlengineering"
+https://www.linkedin.com/posts/chiphuyen_rag-workshop-apr-2024-activity-7186800420969758721-vU3I?utm_source=combined_share_message&utm_medium=member_desktop,"Absolutely loved the discussions and the energy at MLOps Learners’ RAG workshop this week. We had over 200+ comments/questions during the 90 minute workshop! Here are some of the takeaways:
+
+1. Long context length and RAG have pros and cons, and neither will kill the other. A model can take a long context doesn’t mean that it can efficiently leverage all the information. Reranking is needed.
+
+2. Today, most RAG systems are still text-based, but we’re seeing exciting work on RAG for tabular data and multimodal data. There are also discussions on new techniques for RAG such as RAFT (RAFT: Adapting Language Model to Domain Specific RAG) which combines finetuning and RAG.
+
+3. RAG evaluation is still challenging. For RAG, we need to evaluate not only the system end-to-end but also different components of the system, such as the embedding quality and retrieval quality. Many are using AI to both evaluate RAG quality and generate evaluation data.
+
+4. RAG scalability: there were questions around how to make RAG work with a lot of data, such as millions of text chunks or 200K of lines of code. For large data, you might need to filter out data by metadata before doing semantic search for retrieval.
+
+5. There were also a lot of discussions on the optimal configuration for RAG such as the optimal chunk sizes or the optimal number of chunks to retrieve.
+
+Here is the recording with the slides and notebooks used for the workshop: https://lnkd.in/gca8MvUv 
+
+Thanks Val Andrei Fajardo, Lance Martin, and Harpreet Sahota 🥑 for your great presentation and for the great discussions on the server. Thanks Shahul ES for spontaneously jumping in to answer questions about RAGAS. Thanks Samuel Reiswig for hosting the event!
+
+Some other resources from the workshop:
+
+1. Andrei‘s awesome RAG cheatsheet: https://lnkd.in/g3a6Wep9
+2. Langchain’s multimodal RAG template: https://lnkd.in/g-MczRXJ 
+3. RAFT paper: https://lnkd.in/gzd7JmNP 
+4. Self-RAG: https://lnkd.in/gxxFbZBs
+5. Corrective-RAG: https://lnkd.in/g3i2STbZ 
+
+#RAG #AIengineering #LLMs"
