@@ -4,8 +4,6 @@ from dotenv import load_dotenv
 import pandas as pd
 import streamlit as st
 from linkedin_api import Linkedin
-
-# sys.path.append("/Users/hunglv/Downloads/flodesk-onboard")
 from utils import scrape_jina_ai, extract_links_from_blog, extract_blog_content_from_url, get_netloc
 
 load_dotenv(override=True)
@@ -74,8 +72,6 @@ if analyze_button:
 
     st.write("**Processing linkedin account...**")
     api = Linkedin(os.getenv("LINKEDIN_EMAIL"), os.getenv("LINKEDIN_PASSWORD"))
-
-    print(account_name)
 
     posts = api.get_profile_posts(account_name)
     data = []
