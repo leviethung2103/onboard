@@ -28,3 +28,5 @@ cp -r .env.example .env
 streamlit run Welcome.py
 ```
 
+## Reference
+https://meshfirm.com/how-to-use-chatgpt-to-mimic-your-writing-style-a-guide-for-product-managers/

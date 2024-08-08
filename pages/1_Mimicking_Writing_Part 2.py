@@ -3,6 +3,7 @@ import pandas as pd
 import streamlit as st
 from utils import read_file, remove_links, retrieve_style, mimicking_style
 import pandas as pd
+from constants import SAMPLE_WELCOME_MESSAGE_PATH
 
 load_dotenv(override=True)
 
@@ -19,7 +20,7 @@ st.write(
 
 
 reference_content = pd.read_csv("data/chiphuyen/huyenchip.com.csv")["content"].iloc[0]
-sample_content = read_file("sample_welcome_message.txt")
+sample_content = read_file(SAMPLE_WELCOME_MESSAGE_PATH)
 
 c1, c2 = st.columns(2)
 with c1:

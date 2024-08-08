@@ -1,4 +1,5 @@
 OUTPUT_DIR = "data"
+SAMPLE_WELCOME_MESSAGE_PATH = "data/sample_welcome_message.txt"
 
 ANALYZING_PROMPT_TEMPLATE = """
 You are an AI writing style analyzer. Analyze my writing below in the following categories:

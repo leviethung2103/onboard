@@ -16,7 +16,7 @@ st.write(
 )
 
 st.write("### Input")
-website_url = st.text_input("What is your website URL?", value="http://24h.com.vn/")
+website_url = st.text_input("What is your website URL?", value="https://24h.com.vn/")
 
 # create the button analyze
 analyze_button = st.button("Analyze")
@@ -36,7 +36,7 @@ if analyze_button:
         st.stop()
     else:
         output_image = f"{OUTPUT_DIR}/snapshot.png"
-        extractor = ExtractStyle(url="https://www.24h.com.vn/", output_path=output_image)
+        extractor = ExtractStyle(url=website_url, output_path=output_image)
         result = extractor.pipe()
 
         st.success("Analyzed website successfully!")
