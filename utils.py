@@ -4,7 +4,7 @@ import os
 from dotenv import load_dotenv
 from openai import OpenAI
 import json
-import firecrawl
+
 from selenium import webdriver
 import base64
 import re
@@ -135,6 +135,8 @@ def beautiful_soup_scrape_url(url: str):
 
 
 def scrape_firecrawl(url: str):
+    import firecrawl
+
     app = firecrawl.FirecrawlApp(api_key=os.getenv("FIRECRAWL_API_KEY"))
     scraped_data = app.scrape_url(url)["markdown"]
     return scraped_data

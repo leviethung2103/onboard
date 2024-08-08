@@ -6,3 +6,4 @@ linkedin-api
 openai
 selenium
 chromedriver
+firecrawl
